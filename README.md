@@ -73,11 +73,12 @@ git push heroku master
 - Redux-Thunk
 
 ###### This starter automatically completes the following steps:
-- Creates a separate npm directory in the `/client` directory.
-- Creates an Express app in index.js.
+- Creates an Express app in index.js and initializes it to PORT 5000.
 - Formats the package.json file:
    - Adds the *node* and *npm* engines for deployment purposes.
+   - Creates two separate node instances on the back-end and the front-end.
+   - Uses concurrently to run the entire application i.e. both the server and client node instances with `npm run dev`.
 - Contains examples of Express routes, Mongoose models, and Express services.
 - Initializes a config folder with logic for prod vs. dev routing.
    - This config contains a key-value pair for the user to input a MongoURI.
-- Proxies HTTP requests from the front-end to the back-end server.
+- Proxies HTTP requests from the front-end to the back-end server route `/api`.
