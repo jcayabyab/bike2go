@@ -7,7 +7,8 @@ The structure of the project in its current state assumes that the project will 
 ## Table of Contents
 1. [To-do before working on your project](#todo)
 
-### To-do before working on your project: <a name="todo"></a>
+## <a name="todo"></a>
+### To-do before working on your project:
 - Run the following code:
 ```
 npm i
