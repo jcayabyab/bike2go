@@ -5,9 +5,13 @@ This repository includes a boilerplate application that is designed as a launchp
 The structure of the project in its current state assumes that the project will have two separate servers: one for the server-side and one for the client side.
 
 ## Table of Contents
-1. [To-do before working on your project](#todo)
+1. [To-do before working on your project](#to-do-before-working-on-your-project)
+2. [For heroku deployment](#for-heroku-deployment)
+   - [For heroku initialization](#for-heroku-initialization)
+   - [For consequent deployments](#for-consequent-deployments)
+3. [Installed dependencies](#this-starter-installs-the-following-dependencies)
+4. [Completed steps](this-starter-automatically-completes-the-following-steps)
 
-## <a name="todo"></a>
 ### To-do before working on your project:
 - Run the following code:
 ```
@@ -28,7 +32,7 @@ git push -u origin master
 
 ### For heroku deployment:
 
-**For heroku initialization:**
+###### For heroku initialization:
 
 - Ensure git is installed. Preferably, update the github repo with the instructions above.
 - Ensure Heroku CLI is installed. You can download it [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install).
@@ -40,22 +44,24 @@ git remote add heroku {heroku git repository}
 git push heroku master
 ```
 
+###### For consequent deployments:
 
-**This starter installs the following dependencies:**
 
-**Server-side:**
+#### This starter installs the following dependencies:
+
+###### Server-side:
 - Express
 - Nodemon
 - Concurrently
 
-**Client-side:**
+###### Client-side:
 - create-react-app dependencies
 - Redux
 - React-Redux
 - Redux-Form
 - Redux-Thunk
 
-**This starter automatically completes the following steps:**
+###### This starter automatically completes the following steps:
 - Creates a separate npm directory in the `/client` directory.
 - Creates an Express app in index.js.
 - Formats the package.json file:
