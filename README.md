@@ -10,7 +10,7 @@ The structure of the project in its current state assumes that the project will 
    - [For heroku initialization](#for-heroku-initialization)
    - [For consequent deployments](#for-consequent-deployments)
 3. [Installed dependencies](#this-starter-installs-the-following-dependencies)
-4. [Completed steps](this-starter-automatically-completes-the-following-steps)
+4. [Completed steps](#this-starter-automatically-completes-the-following-steps)
 
 ### To-do before working on your project:
 - Run the following code:
