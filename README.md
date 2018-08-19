@@ -20,6 +20,8 @@ cd client
 npm i
 ```
 - Delete the contents of this README.md and replace with `# {your-project-name}`.
+- Add dev.js to your .gitignore file.
+- Update the `mongoURI` key in your `dev.js` file.
 
 **For a separate github repo:**
 - Run the following code:
@@ -45,7 +47,11 @@ git push heroku master
 ```
 
 ###### For consequent deployments:
-
+- Ensure that all files are saved and everything is committed
+- Run
+```
+git push heroku master
+```
 
 #### This starter installs the following dependencies:
 
@@ -53,6 +59,7 @@ git push heroku master
 - Express
 - Nodemon
 - Concurrently
+- Mongoose
 
 ###### Client-side:
 - create-react-app dependencies
