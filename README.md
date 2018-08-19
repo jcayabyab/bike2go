@@ -46,7 +46,7 @@ git remote add heroku {heroku git repository}
 git push heroku master
 ```
 - On heroku.com, navigate to settings.
-- Add a mongoURI key-value pair in Config vars.
+- Add a MONGO_URI key-value pair in Config vars.
    - It would be preferred that this mongo database is unique from the development database.
 
 
@@ -77,3 +77,7 @@ git push heroku master
 - Creates an Express app in index.js.
 - Formats the package.json file:
    - Adds the *node* and *npm* engines for deployment purposes.
+- Contains examples of Express routes, Mongoose models, and Express services.
+- Initializes a config folder with logic for prod vs. dev routing.
+   - This config contains a key-value pair for the user to input a MongoURI.
+- Proxies HTTP requests from the front-end to the back-end server.
