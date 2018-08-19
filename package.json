@@ -1,0 +1,19 @@
+{
+  "name": "mern-starter",
+  "version": "1.0.0",
+  "description": "A personalized boilerplate to use with MERN applications. Includes dependencies for multiple features, such as Mongoose, Passport.js, axios, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JCayabyab/mern-starter.git"
+  },
+  "author": "Jofred Cayabyab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JCayabyab/mern-starter/issues"
+  },
+  "homepage": "https://github.com/JCayabyab/mern-starter#readme"
+}
