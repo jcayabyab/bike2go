@@ -45,6 +45,10 @@ git push -u origin master
 git remote add heroku {heroku git repository}
 git push heroku master
 ```
+- On heroku.com, navigate to settings.
+- Add a mongoURI key-value pair in Config vars.
+   - It would be preferred that this mongo database is unique from the development database.
+
 
 ###### For consequent deployments:
 - Ensure that all files are saved and everything is committed

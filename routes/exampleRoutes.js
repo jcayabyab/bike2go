@@ -8,6 +8,5 @@ module.exports = app => {
 
   app.post("/example/new", (req, res) => {
     new Example({ example: "Example data" }).save();
-    res.send("Hey!");
   });
 };
