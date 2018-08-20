@@ -80,10 +80,11 @@ git push heroku master
    - Adds the *node* and *npm* engines for deployment purposes.
    - Creates two separate node instances on the back-end and the front-end.
    - Uses concurrently to run the entire application i.e. both the server and client node instances with `npm run dev`.
+- Initializes a config folder with logic for prod vs. dev routing.
+   - This config contains a key-value pair for the user to input a MongoURI.
+- Hooks up body-parser middleware to Express application.
 - Contains examples of Express routes, Mongoose models, and Express services.
 - Sets up `Redux` logic around store and dispatch.
 - Sets up `react-router` logic in `App.js`.
 - Contains examples of Redux actions and reducers.
-- Initializes a config folder with logic for prod vs. dev routing.
-   - This config contains a key-value pair for the user to input a MongoURI.
 - Proxies HTTP requests from the front-end to the back-end server route `/api`.
