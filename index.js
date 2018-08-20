@@ -8,6 +8,8 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+app.user(bodyParser.json());
+
 require("./routes/exampleRoutes")(app);
 
 const PORT = process.env.PORT || 5000;

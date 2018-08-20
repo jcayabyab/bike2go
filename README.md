@@ -64,6 +64,7 @@ git push heroku master
 - Nodemon
 - Concurrently
 - Mongoose
+- body-parser
 
 ###### Client-side:
 - create-react-app dependencies
@@ -71,6 +72,7 @@ git push heroku master
 - React-Redux
 - Redux-Form
 - Redux-Thunk
+- axios
 
 ###### This starter automatically completes the following steps:
 - Creates an Express app in index.js and initializes it to PORT 5000.
@@ -79,7 +81,8 @@ git push heroku master
    - Creates two separate node instances on the back-end and the front-end.
    - Uses concurrently to run the entire application i.e. both the server and client node instances with `npm run dev`.
 - Contains examples of Express routes, Mongoose models, and Express services.
-- Sets up Reduxd logic around store and dispatch.
+- Sets up `Redux` logic around store and dispatch.
+- Sets up `react-router` logic in `App.js`.
 - Contains examples of Redux actions and reducers.
 - Initializes a config folder with logic for prod vs. dev routing.
    - This config contains a key-value pair for the user to input a MongoURI.

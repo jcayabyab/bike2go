@@ -24,9 +24,12 @@
   },
   "homepage": "https://github.com/JCayabyab/mern-starter#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "concurrently": "^3.6.1",
     "express": "^4.16.3",
     "mongoose": "^5.2.9",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3",
+    "redux-thunk": "^2.3.0"
   }
 }

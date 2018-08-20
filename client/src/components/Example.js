@@ -1,8 +1,24 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchExample } from "../actions";
 
 class Example extends Component {
   componentDidMount() {
-    //insert action creator here
+    this.props.fetchExample();
+  }
+
+  renderExample() {
+    if (this.props.example.length < 1) {
+      return <div>Waiting for request...</div>;
+    }
+    return (
+      <div>
+        <span style={{ fontWeight: "bold" }}>Data:</span>
+        {this.props.example.map(e => (
+          <div key={e._id}>{e.example}</div>
+        ))}
+      </div>
+    );
   }
 
   render() {
@@ -10,10 +26,17 @@ class Example extends Component {
       <div>
         <h2>Hello!</h2>
         <div>This is what is obtained from your request.</div>
-        <div>{/*insert survey data here*/}</div>
+        <div>{this.renderExample()}</div>
       </div>
     );
   }
 }
 
-export default Example;
+function mapStateToProps({ example }) {
+  return { example };
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchExample }
+)(Example);
