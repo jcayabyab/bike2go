@@ -1,18 +1,33 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
-require("./services/exampleService");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+
+// models go here
 require("./models/Example");
+require("./models/User");
+
+// services go here
+require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-// middlewares / services go here
+// middlewares go here
 app.use(bodyParser.json());
+app.use(cookieSession({
+  maxAge: 60*60*24*30 * 1000,
+  keys: [keys.cookieKey]
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routes go here
 require("./routes/exampleRoutes")(app);
+require("./routes/authRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

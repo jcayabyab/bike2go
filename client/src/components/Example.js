@@ -21,10 +21,22 @@ class Example extends Component {
     );
   }
 
+  renderAuth() {
+    switch (this.props.user) {
+      case null:
+        return <div>Loading...</div>;
+      case false:
+        return <a href="/auth/google">Login</a>;
+      default:
+        return <div><a href="/api/logout">Logout</a> You are logged in.</div>;
+    }
+  }
+
   render() {
     return (
       <div>
         <h2>Hello!</h2>
+        {this.renderAuth()}
         <div>This is what is obtained from your request.</div>
         <div>{this.renderExample()}</div>
       </div>
@@ -32,8 +44,8 @@ class Example extends Component {
   }
 }
 
-function mapStateToProps({ example }) {
-  return { example };
+function mapStateToProps({ example, user }) {
+  return { example, user };
 }
 
 export default connect(
