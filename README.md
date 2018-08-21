@@ -105,3 +105,4 @@ git push heroku master
        - id: this is given by the OAuth service and is used to ensure there are no duplicate user documents.
        - firstName, lastName: contain the first and last name of the user.
    - Adds a requireLogin() middleware to be used within the backend to check if users are logged in before an HTTP request is made.
+   - Passport makes the user available via the `req.user` object.
