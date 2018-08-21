@@ -13,15 +13,19 @@ The structure of the project in its current state assumes that the project will 
 4. [Completed steps](#this-starter-automatically-completes-the-following-steps)
 
 ### To-do before working on your project:
+- Edit the .gitignore file to include `dev.js`.
 - Run the following code:
 ```
+git rm --cached dev.js
 npm i
 cd client
 npm i
 ```
 - Delete the contents of this README.md and replace with `# {your-project-name}`.
 - Add dev.js to your .gitignore file.
-- Update the `mongoURI` key in your `dev.js` file.
+- Create a new MongoDB. mLab can be found [here](https://mlab.com/home).
+- Generate new Google OAuth api keys [here](https://console.developers.google.com/).
+- Update the keys in your `dev.js` file.
 
 **For a separate github repo:**
 - Run the following code:
