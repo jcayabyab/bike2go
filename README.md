@@ -71,6 +71,7 @@ git push heroku master
 - body-parser
 - Passport.js
 - Google Passport Strategy
+- Cookie Session
 
 ###### Client-side:
 - create-react-app dependencies
