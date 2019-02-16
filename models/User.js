@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
+  // google
   userId: String,
+  // Face API
+  personId: String,
   firstName: { type: String, default: "" },
   lastName: { type: String, default: "" },
   faceImgURL: { type: String, default: "" },
