@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 
 module.exports = app => {
-  app.post("/api/face/new", (req, res) => {
+  app.get("/api/face/new", (req, res) => {
+    res.send("Hello");
     // base64 string for the image
     // get a user based on ID from front end
 
