@@ -11,9 +11,9 @@ const userSchema = new Schema({
   // these 3 variables are based on the info inside of rides,
   // could eventually be wrong due to some bad code. We should
   // make a route that recalculates these manually.
-  balance: Number,
-  totalTime: Number,
-  totalDistance: Number,
+  balance: {type: Number, default: 0},
+  totalTime: {type: Number, default: 0},
+  totalDistance: {type: Number, default: 0},
   _rides: { type: Schema.Types.ObjectId, ref: "rides" }
 });
 
