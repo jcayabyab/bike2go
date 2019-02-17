@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 
 const Landing = () => (
   <Wrapper>
+    <Webcam />
     <div>Make an account to use our bikes!</div>
   </Wrapper>
 );
