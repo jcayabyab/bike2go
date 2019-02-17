@@ -33,17 +33,17 @@ class WebcamCapture extends Component {
       <div>
         <Webcam
           audio={false}
-          height="360"
+          height="100%"
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width="480"
+          width="100%"
           videoConstraints={videoConstraints}
         />
-        <Button color="success" onClick={this.testRecog}>
+        {/* <Button color="success" onClick={this.testRecog}>
           Test recognition
-        </Button>
+        </Button> */}
         <Button color="success" onClick={this.testNew}>
-          Test new
+          Take photo!
         </Button>
       </div>
     );

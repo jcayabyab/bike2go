@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Info from "./Info";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import kelvinBike from "./kelvinbike.png";
 import { connect } from "react-redux";
 import { createNewRide, getRides } from "../../actions";
@@ -39,6 +39,7 @@ class Dashboard extends Component {
             <img
               src={kelvinBike}
               style={{ maxHeight: "300px", maxWidth: "300px" }}
+              alt="kelvin on a bike"
             />
           </Col>
           <Col

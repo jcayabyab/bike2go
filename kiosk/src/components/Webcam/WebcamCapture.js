@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { createNewFace, checkFace } from "../../actions";
 
-const Wrapper = styled.div`
+const WebcamBorder = styled(Webcam)`
   border: 4px solid;
   border-color: ${props => props.color};
 `;
@@ -67,8 +67,8 @@ class WebcamCapture extends Component {
       this.props.user && this.props.user.firstName ? "green" : "red";
 
     return (
-      <Wrapper color={color}>
-        <Webcam
+        <WebcamBorder
+        color={color}
           audio={false}
           height="360"
           ref={this.setRef}
@@ -76,7 +76,6 @@ class WebcamCapture extends Component {
           width="480"
           videoConstraints={videoConstraints}
         />
-      </Wrapper>
     );
   }
 }

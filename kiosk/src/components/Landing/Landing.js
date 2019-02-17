@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import qr from "./qr.png";
+
+const Title = styled.div`
+  font-size: 70px;
+  font-weight: bold;
+`;
 
 const Button = styled(Link)`
   padding: 30px;
@@ -27,10 +33,23 @@ const Wrapper = styled.div`
   height: 600px;
 `;
 
+const Qr = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 const Landing = () => (
   <Wrapper>
-    <div>Bike2Go</div>
+    <Title>
+      Bike2<span style={{ color: "green" }}>Go</span>
+    </Title>
     <Button to="/recognition">Start a ride</Button>
+    <Qr>
+      <div>Make an account here!</div>
+      <img alt="qr code" src={qr} height="120px" />
+    </Qr>
   </Wrapper>
 );
 
