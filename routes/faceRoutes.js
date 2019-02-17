@@ -7,8 +7,9 @@ const User = mongoose.model("users");
 const atob = require("atob");
 
 module.exports = app => {
-  app.get("/api/face/new", async (req, res) => {
+  app.post("/api/face/new", async (req, res) => {
     const dataUri = req.body.input;
+    const user = await User.findById(req.body.id);
     var data = dataUri.split(",")[1];
     var mimeType = dataUri.split(";")[0].slice(5);
     var bytes = atob(data);
@@ -23,7 +24,6 @@ module.exports = app => {
     const imageUrl =
       "https://scontent-sea1-1.xx.fbcdn.net/v/t1.15752-9/s2048x2048/52638768_561950294307804_3120951123943358464_n.jpg?_nc_cat=103&_nc_ht=scontent-sea1-1.xx&oh=a2855a5d84ca22b767283c9ce3b4a773&oe=5CDAFBBD";
     const subscriptionKey = "b9db8d7c659246ab9425e9f84a590021";
-    const user = { firstName: "Bob", lastName: "Smith" };
     let idNum;
     //first to get a person ID
     const params = {
@@ -45,7 +45,7 @@ module.exports = app => {
       uri:
         "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/bike2go/persons",
       qs: params,
-      body: '{"name" : "' + user.firstName + '"}',
+      body: '{"name" : "' + user.firstName + user._id + '"}',
       headers: {
         "Content-Type": "application/json",
         "Ocp-Apim-Subscription-Key": subscriptionKey
@@ -71,9 +71,9 @@ module.exports = app => {
         idNum +
         "/persistedFaces",
       qs: params2,
-      body: '{"url": ' + '"' + imageUrl + '"}',
+      body: byteArr,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/octet-stream",
         "Ocp-Apim-Subscription-Key": subscriptionKey
       }
     };
@@ -90,16 +90,23 @@ module.exports = app => {
     // make a new Person inside of the API server
     // upload the face to the Person -> look at return value?
     // DATABASE **
+
+    user.personId = idNum;
+    await user.save();
+    console.log("Obtained");
     // assign personID to User object
     res.send(" HUlllooooo ");
   });
 
   app.post("/api/face/identify", (req, res) => {
-    // get image, call faceDetect
+    // get image, call faceDetect with image
     // return faceID
     // call faceIdentify with the ID
     // return the personID, and confidence
     // DATABASE **
+    const personId = "This is where the personId will be";
+    const user = User.findOne({ personId: personId });
+    res.send(user);
     // Interact with model to get User object
     // send the User
     // if nothing was found, then send an error message

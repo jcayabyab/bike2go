@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Webcam from "../Webcam/WebcamCapture";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +10,6 @@ const Wrapper = styled.div`
 
 const Landing = () => (
   <Wrapper>
-    <Webcam />
     <div>Make an account to use our bikes!</div>
   </Wrapper>
 );

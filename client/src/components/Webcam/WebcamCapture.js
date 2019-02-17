@@ -11,13 +11,13 @@ class WebcamCapture extends Component {
 
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
-    this.props.checkFace(imageSrc);
+    this.props.checkFace(imageSrc, this.props.user._id);
   };
 
   render() {
     const videoConstraints = {
-      width: 1280,
-      height: 720,
+      width: 720,
+      height: 480,
       facingMode: "user"
     };
 
@@ -38,6 +38,6 @@ class WebcamCapture extends Component {
 }
 
 export default connect(
-  null,
+  ({user}) => ({user}),
   { checkFace }
 )(WebcamCapture);
