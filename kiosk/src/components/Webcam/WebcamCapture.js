@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Webcam from "react-webcam";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
-import { withRouter } from "react-router-dom";
 
 import { createNewFace, checkFace } from "../../actions";
 
@@ -19,7 +18,6 @@ class WebcamCapture extends Component {
   testNew = () => {
     const imageSrc = this.webcam.getScreenshot();
     this.props.createNewFace(imageSrc, this.props.user._id);
-    this.props.history.push("dashboard");
   };
 
   render() {
@@ -53,4 +51,4 @@ class WebcamCapture extends Component {
 export default connect(
   ({ user }) => ({ user }),
   { createNewFace, checkFace }
-)(withRouter(WebcamCapture));
+)(WebcamCapture);

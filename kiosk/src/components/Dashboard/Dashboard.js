@@ -8,10 +8,6 @@ import { createNewRide } from "../../actions";
 
 class Dashboard extends Component {
   render() {
-    const { user } = this.props;
-
-    console.log(this.props.user);
-
     return (
       <div>
         <Row>
@@ -35,9 +31,9 @@ class Dashboard extends Component {
               flexDirection: "column"
             }}
           >
-            <Info label="Total distance">{user.totalDistance + " km"}</Info>
-            <Info label="Total time">{user.totalTime + " hr"}</Info>
-            <Info label="Total balance">{user.balance}</Info>
+            <Info label="Total distance">20.5 km</Info>
+            <Info label="Total time">22:05 hr</Info>
+            <Info label="Total balance">$16.75</Info>
           </Col>
         </Row>
       </div>
