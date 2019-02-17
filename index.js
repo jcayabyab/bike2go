@@ -8,6 +8,7 @@ const passport = require("passport");
 // models go here
 require("./models/Example");
 require("./models/User");
+require("./models/Ride");
 
 // services go here
 require("./services/passport");
@@ -29,6 +30,7 @@ app.use(passport.session());
 require("./routes/exampleRoutes")(app);
 require("./routes/authRoutes")(app);
 require("./routes/faceRoutes")(app);
+require("./routes/statsRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

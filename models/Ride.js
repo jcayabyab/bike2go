@@ -9,4 +9,4 @@ const rideSchema = new Schema({
   _user: { type: Schema.Types.ObjectId, ref: "users" }
 });
 
-mongoose.model("users", rideSchema);
+mongoose.model("rides", rideSchema);

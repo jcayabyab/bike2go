@@ -23,5 +23,5 @@ export const checkFace = input => async dispatch => {
 
 export const createNewRide = userId => async dispatch => {
   console.log(userId);
-  //const res = await axios.post("/api/ride/new", { id: userId });
+  const res = await axios.post("/api/ride/new", { id: userId });
 };
