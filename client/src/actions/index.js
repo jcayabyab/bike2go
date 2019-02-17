@@ -17,7 +17,7 @@ export const createNewFace = (input, userId) => async dispatch => {
 };
 
 export const checkFace = input => async dispatch => {
-  const res = await axios.post("/api/face/new", { input });
+  const res = await axios.post("/api/face/identify", { input });
   // dispatch({ type: FETCH_USER, payload: res.data });
 };
 
