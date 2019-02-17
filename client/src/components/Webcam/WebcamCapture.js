@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import Webcam from "react-webcam";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
 
-import { checkFace } from "../../actions";
+import { createNewFace, checkFace } from "../../actions";
 
 class WebcamCapture extends Component {
   setRef = webcam => {
     this.webcam = webcam;
   };
 
-  capture = () => {
+  testRecog = () => {
     const imageSrc = this.webcam.getScreenshot();
     this.props.checkFace(imageSrc, this.props.user._id);
+  };
+
+  testNew = () => {
+    const imageSrc = this.webcam.getScreenshot();
+    this.props.createNewFace(imageSrc, this.props.user._id);
   };
 
   render() {
@@ -31,13 +37,18 @@ class WebcamCapture extends Component {
           width="480"
           videoConstraints={videoConstraints}
         />
-        <button onClick={this.capture}>Capture photo</button>
+        <Button color="success" onClick={this.testRecog}>
+          Test recognition
+        </Button>
+        <Button color="success" onClick={this.testNew}>
+          Test new
+        </Button>
       </div>
     );
   }
 }
 
 export default connect(
-  ({user}) => ({user}),
-  { checkFace }
+  ({ user }) => ({ user }),
+  { createNewFace, checkFace }
 )(WebcamCapture);
