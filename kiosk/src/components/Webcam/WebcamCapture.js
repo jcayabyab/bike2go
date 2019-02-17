@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { createNewFace, checkFace } from "../../actions";
 
 const WebcamBorder = styled(Webcam)`
-  border: 4px solid;
+  border: 10px solid;
   border-color: ${props => props.color};
 `;
 
@@ -70,10 +70,11 @@ class WebcamCapture extends Component {
         <WebcamBorder
         color={color}
           audio={false}
-          height="360"
+          height="100%"
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width="480"
+          screenshotQuality="0.4"
+          width="100%"
           videoConstraints={videoConstraints}
         />
     );
