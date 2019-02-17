@@ -1,3 +1,7 @@
+'use strict';
+
+const request = require('request-promise');
+
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const atob = require("atob");
@@ -46,17 +50,18 @@ module.exports = app => {
     // upload the face to the Person -> look at return value?
     // DATABASE **
     // assign personID to User object
+    res.send("Hulllooooo");
   });
 
   app.post("/api/face/identify", (req, res) => {
-    // get image, call faceDetect
-    // return faceID
-    // call faceIdentify with the ID
-    // return the personID, and confidence
+	// get image, call faceDetect
+	// return faceID
+	// call faceIdentify with the ID
+	// return the personID, and confidence
 
-    // DATABASE **
-    // Interact with model to get User object
-    // send the User
-    // if nothing was found, then send an error message
+	// DATABASE **
+	// Interact with model to get User object
+	// send the User
+	// if nothing was found, then send an error message
   });
 };
