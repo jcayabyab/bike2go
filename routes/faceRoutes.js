@@ -7,7 +7,7 @@ const User = mongoose.model("users");
 const atob = require("atob");
 
 module.exports = app => {
-  app.get("/api/face/new", async (req, res) => {
+  app.post("/api/face/new", async (req, res) => {
     const dataUri = req.body.input;
     var data = dataUri.split(",")[1];
     var mimeType = dataUri.split(";")[0].slice(5);
