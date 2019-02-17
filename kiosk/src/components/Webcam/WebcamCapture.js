@@ -15,15 +15,18 @@ class WebcamCapture extends Component {
   state = { seconds: 0 };
 
   tick() {
-    if (this.state.seconds % 6 === 0) {
+    if (this.state.seconds % 5 === 0) {
       // call action to take snapshot then do more shit
       console.log("checking for face...");
       this.testRecog();
-      if (this.props.user && this.props.user.firstName) {
-        setTimeout(() => {
-          this.props.history.push("info");
-        }, 1500);
-      }
+    }
+    if (this.props.user && this.props.user.firstName) {
+      setTimeout(() => {
+        this.props.history.push("info");
+      }, 1500);
+    }
+    if (this.state.seconds === 17) {
+      this.props.history.push("/");
     }
 
     this.setState(prevState => ({
