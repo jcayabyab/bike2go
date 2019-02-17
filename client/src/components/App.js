@@ -25,8 +25,21 @@ class App extends Component {
               exact
               path="/dashboard"
               render={() => {
-                return !this.props.user ? <Redirect to="/" /> : <Dashboard />;
-              }}
+                //return !this.props.user ? <Landing /> : <Redirect to="/dashboard" />;
+
+                if (this.props.user) {
+                  console.log(this.props.user);
+
+                  if (this.props.user.personId === "uninitialized") {
+                    return <Redirect to="/webcam" />;
+                  } else {
+                    return <Dashboard />;
+                  }
+                } else {
+                  return <Redirect to="/" />;
+                }
+              }
+              }
             />
             <Route
               exact
@@ -35,10 +48,12 @@ class App extends Component {
                 //return !this.props.user ? <Landing /> : <Redirect to="/dashboard" />;
 
                 if (this.props.user) {
+                  console.log(this.props.user);
+
                   if (this.props.user.personId === "uninitialized") {
-                    return <Redirect to="/WebcamCapture" />;
+                    return <Redirect to="/webcam" />;
                   } else {
-                    return <Redirect to="/Dashboard" />;
+                    return <Redirect to="/dashboard" />;
                   }
                 } else {
                   return <Landing />;
