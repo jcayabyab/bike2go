@@ -11,4 +11,8 @@ module.exports = app => {
   app.post("/example/new", (req, res) => {
     new Example({ example: "Example data" }).save();
   });
+
+  app.get("/api/hello", (req, res) => {
+    res.send("Hello!");
+  })
 };
