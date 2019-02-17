@@ -5,15 +5,17 @@ const request = require("request-promise");
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const atob = require("atob");
+const trainGroup = require("../utils/trainPersonGroup");
 
 module.exports = app => {
   // this adds new users
   app.post("/api/face/new", async (req, res) => {
     const dataUri = req.body.input;
     const user = await User.findById(req.body.id); // unintialized
-    if(user.personId !== 'uninitialized'){
-      return;
-    }
+    // if(user.personId !== 'uninitialized'){
+    //   console.log(' your picture already exists');
+    //   return;
+    // }
     var data = dataUri.split(",")[1];
     var mimeType = dataUri.split(";")[0].slice(5);
     var bytes = atob(data);
@@ -99,6 +101,7 @@ module.exports = app => {
     await user.save();
 
     // assign personID to User object
+    trainGroup();
     res.send(" HUlllooooo ");
   });
 
@@ -168,8 +171,8 @@ module.exports = app => {
         console.log('Error: ', error);
         return;
       }
-      console.log(body);
       let jsonResponse = JSON.stringify(JSON.parse(body), null, '  ');
+      console.log(jsonResponse);          // gets up to here
       candidateID = JSON.parse(body)[0].candidates[0].personId;
       confidenceLevel = JSON.parse(body)[0].candidates[0].confidence;
       console.log('response from indentify <<< 3\n');
@@ -182,6 +185,7 @@ module.exports = app => {
       console.log(' Error, user doest exist ');
     }
     console.log(user);
+    console.log('<< end of everything >>');
     // res.send(user);
     // Interact with model to get User object
     // send the User
