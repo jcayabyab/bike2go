@@ -8,7 +8,7 @@ const RideList = props => (
       .slice(0, 8)
       .reverse()
       .map((ride, index) => (
-        <Ride {...ride} key={ride.id} num={props.rides.length - index} />
+        <Ride {...ride} key={index} num={props.rides.length - index} />
       ))}
   </div>
 );

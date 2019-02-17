@@ -30,7 +30,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 600px;
+  height: 700px;
+  border: 15px green solid;
+  width: 600px;
+  margin: 0 auto;
 `;
 
 const Qr = styled.div`
@@ -40,11 +43,24 @@ const Qr = styled.div`
   align-items: center;
 `;
 
+const Subtitle = styled.div`
+  font-style: italic;
+`
+
+const Top = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 const Landing = () => (
   <Wrapper>
-    <Title>
-      Bike2<span style={{ color: "green" }}>Go</span>
-    </Title>
+    <Top>
+      <Title>
+        Bike2<span style={{ color: "green" }}>Go</span>
+      </Title>
+      <Subtitle>Just keep cycling</Subtitle>
+    </Top>
     <Button to="/recognition">Start a ride</Button>
     <Qr>
       <div>Make an account here!</div>

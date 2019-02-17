@@ -15,6 +15,9 @@ class App extends Component {
   }
 
   render() {
+
+    console.log(this.props.user);
+
     return (
       <div>
         <BrowserRouter>
@@ -46,7 +49,7 @@ class App extends Component {
               path="/"
               render={() => {
                 //return !this.props.user ? <Landing /> : <Redirect to="/dashboard" />;
-
+                // if not loaded, this.props.user is false
                 if (this.props.user) {
                   console.log(this.props.user);
 

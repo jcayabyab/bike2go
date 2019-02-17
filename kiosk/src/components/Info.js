@@ -9,6 +9,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 15px solid green;
+  width: 500px;
+  height: 700px;
+  margin: 0 auto;
 `;
 
 class Info extends Component {
@@ -36,7 +40,7 @@ class Info extends Component {
       <Wrapper>
         <h2>
           {`Hello, `}
-          <span style={{ color: "green" }}>`${user.firstName}!`</span>
+          <span style={{ color: "green" }}>{user.firstName}!</span>
         </h2>
         <div>{`A bike has been unlocked for you.`}</div>
         <div>
@@ -44,7 +48,11 @@ class Info extends Component {
           <span style={{ fontWeight: "bold" }}>$3/hr</span>.
         </div>
         <div>{`Enjoy your ride!`}</div>
-        <img src={kelvinBike} alt="kelvin on a bike" />
+        <img
+          src={kelvinBike}
+          alt="kelvin on a bike"
+          style={{ height: "400px" }}
+        />
       </Wrapper>
     );
   }
