@@ -1,8 +1,20 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
+const atob = require("atob");
 
 module.exports = app => {
   app.get("/api/face/new", (req, res) => {
+    const dataUri = req.body.input;
+    var data = dataUri.split(',')[1];
+    var mimeType = dataUri.split(';')[0].slice(5)
+    var bytes = atob(data);
+    var buf = new ArrayBuffer(bytes.length);
+    var byteArr = new Uint8Array(buf);
+
+    for (var i = 0; i < bytes.length; i++) {
+        byteArr[i] = bytes.charCodeAt(i);
+    }
+
     // base64 string for the image
     // get a user based on ID from front end
     const imageUrl = 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.15752-9/s2048x2048/52638768_561950294307804_3120951123943358464_n.jpg?_nc_cat=103&_nc_ht=scontent-sea1-1.xx&oh=a2855a5d84ca22b767283c9ce3b4a773&oe=5CDAFBBD';
