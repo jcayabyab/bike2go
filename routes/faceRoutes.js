@@ -94,13 +94,6 @@ module.exports = app => {
     });
     user.personId = idNum;
     await user.save();
-    // make a new Person inside of the API server
-    // upload the face to the Person -> look at return value?
-    // DATABASE **
-    user.personId = idNum;
-    await user.save();
-
-    // assign personID to User object
     trainGroup();
     res.send(" HUlllooooo ");
   });
@@ -192,7 +185,7 @@ module.exports = app => {
       console.log(" Error, user doest exist ");
     }
     console.log(user);
-    res.send(user);
+    await res.send(user);
     console.log("<< end of everything >>");
   });
 };

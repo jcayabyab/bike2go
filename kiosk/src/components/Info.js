@@ -18,15 +18,19 @@ class Info extends Component {
     if (!user || !user.firstName) {
       this.props.history.push("/");
     } else {
-      createNewRide(user.id);
+      console.log(user);
+      this.props.createNewRide(user._id);
+      setTimeout(() => {
+        this.props.history.push("/");
+      }, 10000);
     }
   }
 
   render() {
-    const user = this.props;
+    const { user } = this.props;
     return (
       <Wrapper>
-        <div>{`Hello, ${user.name}!`}</div>
+        <div>{`Hello, ${user.firstName}!`}</div>
         <div>{`A bike has been unlocked for you.`}</div>
         <div>{`Your current rate is $3/hr.`}</div>
         <div>{`Enjoy your ride!`}</div>
@@ -37,5 +41,5 @@ class Info extends Component {
 
 export default connect(
   ({ user }) => ({ user }),
-  createNewRide
+  { createNewRide }
 )(withRouter(Info));

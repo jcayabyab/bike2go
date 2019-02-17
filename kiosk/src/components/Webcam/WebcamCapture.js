@@ -76,12 +76,6 @@ class WebcamCapture extends Component {
           width="480"
           videoConstraints={videoConstraints}
         />
-        <Button color="success" onClick={this.testRecog}>
-          Test recognition
-        </Button>
-        <Button color="success" onClick={this.testNew}>
-          Test new
-        </Button>
       </Wrapper>
     );
   }

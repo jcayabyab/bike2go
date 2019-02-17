@@ -17,14 +17,14 @@ export const createNewFace = (input, userId) => async dispatch => {
 };
 
 export const checkFace = input => async dispatch => {
+  let res;
   if (input) {
-    const res = await axios.post("/api/face/identify", { input });
-    // dispatch({ type: FETCH_USER, payload: res.data });
+    res = await axios.post("/api/face/identify", { input });
+    dispatch({ type: FETCH_USER, payload: res.data });
   }
 };
 
 export const createNewRide = userId => async dispatch => {
-  console.log(userId);
   const res = await axios.post("/api/ride/new", { id: userId });
   dispatch({ type: FETCH_USER, payload: res.data.user });
   dispatch({ type: FETCH_RIDES, payload: res.data.rides });

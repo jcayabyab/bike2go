@@ -17,8 +17,12 @@ export const createNewFace = (input, userId) => async dispatch => {
 };
 
 export const checkFace = input => async dispatch => {
+  console.log("Hey there");
+  let res;
   if (input) {
-    const res = await axios.post("/api/face/identify", { input });
+    res = await axios.post("/api/face/identify", { input });
+    console.log("Hello");
+    console.log(res.data);
     dispatch({ type: FETCH_USER, payload: res.data });
   }
 };

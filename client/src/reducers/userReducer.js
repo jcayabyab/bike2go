@@ -14,8 +14,10 @@ const emptyUser = {
 
 export default function(state = emptyUser, action) {
   switch (action.type) {
-    case FETCH_USER:
+    case FETCH_USER: {
+      console.log(action.payload);
       return action.payload || false;
+    }
     default:
       return state;
   }
