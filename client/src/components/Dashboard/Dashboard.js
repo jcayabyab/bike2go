@@ -47,7 +47,7 @@ class Dashboard extends Component {
               {milliToHour(user.totalTime) + " hr"}
             </Info>
             <Info label="Total balance">{formatMoney(user.balance)}</Info>
-            <Info label="reward points">{(user.totalDistance/10)+(user.totalDistance/10) +" pointsc"}</Info>
+            <Info label="reward points">{(user.totalDistance/10)+(user.totalDistance/10) +" CyclePoints"}</Info>
           </Col>
         </Row>
       </div>
