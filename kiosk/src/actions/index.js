@@ -11,6 +11,22 @@ export const fetchExample = () => async dispatch => {
   dispatch({ type: FETCH_EXAMPLE, payload: res.data });
 };
 
+export const clearUser = () => async dispatch => {
+  dispatch({
+    type: FETCH_USER,
+    payload: {
+      firstName: null,
+      lastName: null,
+      _id: null,
+      userId: null,
+      personId: null,
+      totalDistance: 0,
+      totalTime: 0,
+      balance: 0
+    }
+  });
+};
+
 export const createNewFace = (input, userId) => async dispatch => {
   const res = await axios.post("/api/face/new", { input, id: userId });
   // dispatch({ type: FETCH_USER, payload: res.data });

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
-import { createNewRide } from "../actions";
+import { createNewRide, clearUser } from "../actions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,6 +26,10 @@ class Info extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearUser();
+  }
+
   render() {
     const { user } = this.props;
     return (
@@ -41,5 +45,5 @@ class Info extends Component {
 
 export default connect(
   ({ user }) => ({ user }),
-  { createNewRide }
+  { createNewRide, clearUser }
 )(withRouter(Info));

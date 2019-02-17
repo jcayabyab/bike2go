@@ -133,17 +133,32 @@ module.exports = app => {
         "Ocp-Apim-Subscription-Key": subscriptionKey
       }
     };
+
+    let foundFace = true;
+
     await request.post(options, (error, response, body) => {
       if (error) {
         console.log("Error: ", error);
         return;
       }
       let jsonResponse = JSON.stringify(JSON.parse(body), null, "  ");
+      console.log("Out: ", JSON.parse(body));
+      const faceData = JSON.parse(body);
+      if (!faceData.length) {
+        foundFace = false;
+        return;
+      }
       testId = JSON.parse(body)[0].faceId;
       console.log("face Id from detect >>>> 2\n");
       console.log(jsonResponse);
       console.log(" KKK " + testId);
     });
+    // terminate if no face was found.
+    if (!foundFace) {
+      console.log("Could not find a face.");
+      return;
+    }
+
     // now using faceId (testID) returned by detect to run identify
     let candidateID;
     let confidenceLevel;
@@ -161,6 +176,9 @@ module.exports = app => {
         "Ocp-Apim-Subscription-Key": subscriptionKey
       }
     };
+
+    let foundMatch = true;
+
     await request.post(options2, (error, response, body) => {
       if (error) {
         console.log("Error: ", error);
@@ -168,6 +186,11 @@ module.exports = app => {
       }
       let jsonResponse = JSON.stringify(JSON.parse(body), null, "  ");
       console.log(jsonResponse); // gets up to here
+      const output = JSON.parse(body);
+      if (output[0].candidates.length === 0) {
+        foundMatch = false;
+        return;
+      }
       candidateID = JSON.parse(body)[0].candidates[0].personId;
       confidenceLevel = JSON.parse(body)[0].candidates[0].confidence;
       console.log("response from indentify <<< 3\n");
@@ -179,6 +202,11 @@ module.exports = app => {
           confidenceLevel
       );
     });
+
+    if (!foundMatch) {
+      console.log("No match was found.");
+      return;
+    }
 
     const user = await User.findOne({ personId: candidateID });
     if (user === null) {
