@@ -27,12 +27,12 @@ const Nav = styled.nav`
 const Brand = styled(Link)`
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  color: #6ba292
+  color: #6ba292;
 `;
 
 class NavBar extends Component {
   renderLinks() {
-    if(!this.props.user) {
+    if (!this.props.user) {
       return null;
     }
 
@@ -98,10 +98,7 @@ class NavBar extends Component {
     // Bootstrap code
     return (
       <Nav className="navbar navbar-expand-md navbar-light bg-light">
-        <Brand
-          to="/"
-          className="navbar-brand"
-        >
+        <Brand to="/" className="navbar-brand">
           Bike2Go
         </Brand>
         <button
