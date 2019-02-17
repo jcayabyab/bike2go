@@ -13,7 +13,7 @@ class WebcamCapture extends Component {
 
   testRecog = () => {
     const imageSrc = this.webcam.getScreenshot();
-    this.props.checkFace(imageSrc, this.props.user._id);
+    this.props.checkFace(imageSrc);
   };
 
   testNew = () => {

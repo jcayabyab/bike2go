@@ -1,16 +1,37 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Button = styled(Link)`
+  padding: 30px;
+  background-color: green;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  transition: 0.5s linear background-color;
+  border-radius: 8px;
+  border: 5px forestgreen solid;
+
+  &:hover {
+    background-color: darkgreen;
+    text-decoration: none;
+    color: white;
+  }
+`;
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 100px 0;
+  height: 600px;
 `;
 
 const Landing = () => (
   <Wrapper>
-    <div>Make an account to use our bikes!</div>
+    <div>Bike2Go</div>
+    <Button to="/recognition">Start a ride</Button>
+    <Button to="/info">Finish a ride</Button>
   </Wrapper>
 );
 

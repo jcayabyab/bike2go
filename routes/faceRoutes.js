@@ -105,12 +105,12 @@ module.exports = app => {
     res.send(" HUlllooooo ");
   });
 
-  // this identifies if user exists 
-  app.post("/api/face/identify", async(req, res) => {
+  // this identifies if user exists
+  app.post("/api/face/identify", async (req, res) => {
     //get req.body.input
     // get image, call faceDetect with image
     // return faceID
-    // call faceIdentify with the ID 
+    // call faceIdentify with the ID
     // return the personID, and confidence
     // DATABASE **
     const dataUri = req.body.input;
@@ -128,33 +128,35 @@ module.exports = app => {
     const subscriptionKey = "b9db8d7c659246ab9425e9f84a590021";
     //first doing detect face to get faceID to compare with database
     const params = {
-      'returnFaceId': 'true',
-      'returnFaceLandmarks': 'false'
+      returnFaceId: "true",
+      returnFaceLandmarks: "false"
     };
     const options = {
       uri: "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect",
       qs: params,
       body: byteArr,
       headers: {
-          'Content-Type': 'application/octet-stream',
-          'Ocp-Apim-Subscription-Key' : subscriptionKey
+        "Content-Type": "application/octet-stream",
+        "Ocp-Apim-Subscription-Key": subscriptionKey
       }
     };
     await request.post(options, (error, response, body) => {
       if (error) {
-        console.log('Error: ', error);
+        console.log("Error: ", error);
         return;
       }
-      let jsonResponse = JSON.stringify(JSON.parse(body), null, '  ');
+      let jsonResponse = JSON.stringify(JSON.parse(body), null, "  ");
       testId = JSON.parse(body)[0].faceId;
-      console.log('face Id from detect >>>> 2\n');
+      console.log("face Id from detect >>>> 2\n");
       console.log(jsonResponse);
-      console.log(' KKK ' + testId);
+      console.log(" KKK " + testId);
     });
     // now using faceId (testID) returned by detect to run identify
-    let candidateID; let confidenceLevel;
+    let candidateID;
+    let confidenceLevel;
     const options2 = {
-      uri: "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/identify",
+      uri:
+        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/identify",
       body: `{
         "personGroupId" : "bike2go",
         "faceIds" : ["${testId}"],
@@ -162,33 +164,35 @@ module.exports = app => {
         "confidenceThreshold": "0.5"
       }`,
       headers: {
-          'Content-Type': 'application/json',
-          'Ocp-Apim-Subscription-Key' : subscriptionKey
+        "Content-Type": "application/json",
+        "Ocp-Apim-Subscription-Key": subscriptionKey
       }
     };
     await request.post(options2, (error, response, body) => {
       if (error) {
-        console.log('Error: ', error);
+        console.log("Error: ", error);
         return;
       }
-      let jsonResponse = JSON.stringify(JSON.parse(body), null, '  ');
-      console.log(jsonResponse);          // gets up to here
+      let jsonResponse = JSON.stringify(JSON.parse(body), null, "  ");
+      console.log(jsonResponse); // gets up to here
       candidateID = JSON.parse(body)[0].candidates[0].personId;
       confidenceLevel = JSON.parse(body)[0].candidates[0].confidence;
-      console.log('response from indentify <<< 3\n');
+      console.log("response from indentify <<< 3\n");
       console.log(jsonResponse);
-      console.log(' candidate 1 is ' + candidateID + ' with a confidence level of ' + confidenceLevel);
+      console.log(
+        " candidate 1 is " +
+          candidateID +
+          " with a confidence level of " +
+          confidenceLevel
+      );
     });
 
     const user = await User.findOne({ personId: candidateID });
-    if(user === null){
-      console.log(' Error, user doest exist ');
+    if (user === null) {
+      console.log(" Error, user doest exist ");
     }
     console.log(user);
-    console.log('<< end of everything >>');
-    // res.send(user);
-    // Interact with model to get User object
-    // send the User
-    // if nothing was found, then send an error message
+    res.send(user);
+    console.log("<< end of everything >>");
   });
 };

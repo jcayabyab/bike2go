@@ -6,7 +6,7 @@ const constants = require("../utils/constants");
 module.exports = app => {
   //req.user is going to have an id
   app.post("/api/ride/new", async (req, res) => {
-    const user = await User.findById(req.body.id);
+    const user = await User.findById(req.body.id).populate("rides");
     console.log(user);
 
     const ride = await new Ride({
@@ -15,14 +15,21 @@ module.exports = app => {
       completed: false,
       _user: user.id
     }).save();
-    console.log(ride);
-    //change to pass array of rides, currently only the one ride
     user.totalTime += ride.time;
     user.totalDistance += ride.distance;
-    user.balance += ride.constants;
+    user.balance = constants.rate * user.totalTime;
     console.log(functions.milliToHour(user));
     await user.save();
 
-    res.send(user);
+    const rides = await Ride.find({ _user: req.body.id });
+
+    res.send({ user, rides });
+  });
+
+  app.post("/api/ride", async (req, res) => {
+    console.log("Obtained");
+    console.log(req.body.id);
+    const rides = await Ride.find({ _user: req.body.id });
+    res.send(rides);
   });
 };
