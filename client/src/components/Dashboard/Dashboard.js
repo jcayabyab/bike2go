@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Info from "./Info";
 import { Row, Col } from "reactstrap";
-import kelvinBike from "./kelvinbike.png";
 import { connect } from "react-redux";
 import { createNewRide, getRides } from "../../actions";
 import { formatMoney, milliToHour } from "../../utils";
@@ -26,7 +25,7 @@ class Dashboard extends Component {
     return (
       <div>
         <Row>
-          <Col md={4}>
+          <Col md={7}>
             <RideList rides={rides} />
             {/* <Button
               color="success"
@@ -35,15 +34,8 @@ class Dashboard extends Component {
               Create new ride
             </Button> */}
           </Col>
-          <Col md={5} style={{ display: "flex", justifyContent: "center" }}>
-            <img
-              src={kelvinBike}
-              style={{ maxHeight: "300px", maxWidth: "300px" }}
-              alt="kelvin on a bike"
-            />
-          </Col>
           <Col
-            md={3}
+            md={5}
             style={{
               display: "flex",
               alignItems: "flex-end",
