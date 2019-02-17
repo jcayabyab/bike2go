@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Webcam from "react-webcam";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
 
-import { checkFace } from "../../actions";
+import { createNewFace } from "../../actions";
 
 class WebcamCapture extends Component {
   setRef = webcam => {
@@ -11,7 +12,7 @@ class WebcamCapture extends Component {
 
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
-    this.props.checkFace(imageSrc, this.props.user._id);
+    this.props.createNewFace(imageSrc, this.props.user._id);
   };
 
   render() {
@@ -25,19 +26,21 @@ class WebcamCapture extends Component {
       <div>
         <Webcam
           audio={false}
-          height="100%"
+          height={480}
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width="100%"
+          width={720}
           videoConstraints={videoConstraints}
         />
-        <button onClick={this.capture}>Capture photo</button>
+        <Button color="success" onClick={this.capture}>
+          Capture photo
+        </Button>
       </div>
     );
   }
 }
 
 export default connect(
-  ({user}) => ({user}),
-  { checkFace }
+  ({ user }) => ({ user }),
+  { createNewFace }
 )(WebcamCapture);
