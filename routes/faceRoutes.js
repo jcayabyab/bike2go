@@ -95,7 +95,7 @@ module.exports = app => {
     user.personId = idNum;
     await user.save();
     trainGroup();
-    res.send(" HUlllooooo ");
+    res.send(user);
   });
 
   // this identifies if user exists

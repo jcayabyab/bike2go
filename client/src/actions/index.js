@@ -13,7 +13,7 @@ export const fetchExample = () => async dispatch => {
 
 export const createNewFace = (input, userId) => async dispatch => {
   const res = await axios.post("/api/face/new", { input, id: userId });
-  // dispatch({ type: FETCH_USER, payload: res.data });
+  dispatch({ type: FETCH_USER, payload: res.data });
 };
 
 export const checkFace = input => async dispatch => {

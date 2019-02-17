@@ -7,6 +7,8 @@ import { withRouter } from "react-router-dom";
 import { createNewFace, checkFace } from "../../actions";
 
 class WebcamCapture extends Component {
+  state = { loading: false };
+
   setRef = webcam => {
     this.webcam = webcam;
   };
@@ -17,10 +19,26 @@ class WebcamCapture extends Component {
   };
 
   testNew = () => {
+    this.setState({ loading: true });
     const imageSrc = this.webcam.getScreenshot();
     this.props.createNewFace(imageSrc, this.props.user._id);
-    this.props.history.push("dashboard");
+    setTimeout(() => this.props.history.push("dashboard"), 4000);
   };
+
+  renderBottom() {
+    if (this.state.loading) {
+      return <div>Loading...</div>;
+    }
+    return (
+      <Button
+        color="success"
+        onClick={() => this.testNew()}
+        style={{ width: "100%" }}
+      >
+        Take photo!
+      </Button>
+    );
+  }
 
   render() {
     const videoConstraints = {
@@ -37,14 +55,15 @@ class WebcamCapture extends Component {
           ref={this.setRef}
           screenshotFormat="image/jpeg"
           width="100%"
+          screenshotQuality={0.5}
           videoConstraints={videoConstraints}
         />
         {/* <Button color="success" onClick={this.testRecog}>
           Test recognition
         </Button> */}
-        <Button color="success" onClick={this.testNew}>
-          Take photo!
-        </Button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {this.renderBottom()}
+        </div>
       </div>
     );
   }
