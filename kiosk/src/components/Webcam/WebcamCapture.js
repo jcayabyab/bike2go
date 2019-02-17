@@ -15,7 +15,7 @@ class WebcamCapture extends Component {
   state = { seconds: 0 };
 
   tick() {
-    if (this.state.seconds % 5 === 0) {
+    if (this.state.seconds % 3 === 0) {
       // call action to take snapshot then do more shit
       console.log("checking for face...");
       this.testRecog();
@@ -58,8 +58,8 @@ class WebcamCapture extends Component {
 
   render() {
     const videoConstraints = {
-      width: 480,
-      height: 360,
+      width: 600,
+      height: 400,
       facingMode: "user"
     };
 
@@ -70,11 +70,11 @@ class WebcamCapture extends Component {
         <WebcamBorder
         color={color}
           audio={false}
-          height="100%"
+          height="480"
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          screenshotQuality="0.4"
-          width="100%"
+          screenshotQuality="0.5"
+          width="720"
           videoConstraints={videoConstraints}
         />
     );

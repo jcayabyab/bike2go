@@ -55,7 +55,7 @@ class WebcamCapture extends Component {
           ref={this.setRef}
           screenshotFormat="image/jpeg"
           width="100%"
-          screenshotQuality={0.5}
+          screenshotQuality={0.4}
           videoConstraints={videoConstraints}
         />
         {/* <Button color="success" onClick={this.testRecog}>
