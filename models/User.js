@@ -5,10 +5,9 @@ const userSchema = new Schema({
   // google
   userId: String,
   // Face API
-  personId: String,
+  personId: {type: String, default: "uninitialized"},
   firstName: { type: String, default: "" },
   lastName: { type: String, default: "" },
-  faceImgURL: { type: String, default: "" },
   // these 3 variables are based on the info inside of rides,
   // could eventually be wrong due to some bad code. We should
   // make a route that recalculates these manually.

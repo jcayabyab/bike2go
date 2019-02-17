@@ -7,6 +7,7 @@ import Navbar from "./Navbar/NavBar";
 
 import Landing from "./Landing/Landing";
 import Dashboard from "./Dashboard/Dashboard";
+import WebcamCapture from "./Webcam/WebcamCapture";
 
 class App extends Component {
   componentDidMount() {
@@ -14,13 +15,12 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.user);
-
     return (
       <div>
         <BrowserRouter>
           <Container>
             <Navbar />
+            <Route exact path="/webcam" component={WebcamCapture} />
             <Route
               exact
               path="/dashboard"
@@ -32,7 +32,17 @@ class App extends Component {
               exact
               path="/"
               render={() => {
-                return !this.props.user ? <Landing /> : <Redirect to="/dashboard" />;
+                //return !this.props.user ? <Landing /> : <Redirect to="/dashboard" />;
+
+                if (this.props.user) {
+                  if (this.props.user.personId === "uninitialized") {
+                    return <Redirect to="/WebcamCapture" />;
+                  } else {
+                    return <Redirect to="/Dashboard" />;
+                  }
+                } else {
+                  return <Landing />;
+                }
               }}
             />
           </Container>
