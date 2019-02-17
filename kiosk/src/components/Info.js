@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
+import { createNewRide } from "../actions";
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,8 +13,12 @@ const Wrapper = styled.div`
 
 class Info extends Component {
   componentDidMount() {
-    if (!this.props.user) {
+    const { user } = this.props;
+
+    if (!user || !user.firstName) {
       this.props.history.push("/");
+    } else {
+      createNewRide(user.id);
     }
   }
 
@@ -29,4 +35,7 @@ class Info extends Component {
   }
 }
 
-export default connect(({ user }) => ({ user }))(withRouter(Info));
+export default connect(
+  ({ user }) => ({ user }),
+  createNewRide
+)(withRouter(Info));

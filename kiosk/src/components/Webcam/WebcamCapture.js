@@ -3,8 +3,13 @@ import Webcam from "react-webcam";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
-
+import styled from "styled-components";
 import { createNewFace, checkFace } from "../../actions";
+
+const Wrapper = styled.div`
+  border: 4px solid;
+  border-color: ${props => props.color};
+`;
 
 class WebcamCapture extends Component {
   state = { seconds: 0 };
@@ -15,7 +20,9 @@ class WebcamCapture extends Component {
       console.log("checking for face...");
       this.testRecog();
       if (this.props.user && this.props.user.firstName) {
-        this.props.history.push("info");
+        setTimeout(() => {
+          this.props.history.push("info");
+        }, 1500);
       }
     }
 
@@ -53,8 +60,11 @@ class WebcamCapture extends Component {
       facingMode: "user"
     };
 
+    const color =
+      this.props.user && this.props.user.firstName ? "green" : "red";
+
     return (
-      <div>
+      <Wrapper color={color}>
         <Webcam
           audio={false}
           height="360"
@@ -69,7 +79,7 @@ class WebcamCapture extends Component {
         <Button color="success" onClick={this.testNew}>
           Test new
         </Button>
-      </div>
+      </Wrapper>
     );
   }
 }

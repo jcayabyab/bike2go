@@ -28,12 +28,12 @@ class Dashboard extends Component {
         <Row>
           <Col md={4}>
             <RideList rides={rides} />
-            <Button
+            {/* <Button
               color="success"
               onClick={() => this.props.createNewRide(this.props.user._id)}
             >
               Create new ride
-            </Button>
+            </Button> */}
           </Col>
           <Col md={5} style={{ display: "flex", justifyContent: "center" }}>
             <img

@@ -14,7 +14,7 @@ const userSchema = new Schema({
   balance: {type: Number, default: 0},
   totalTime: {type: Number, default: 0},
   totalDistance: {type: Number, default: 0},
-  _rides: { type: Schema.Types.ObjectId, ref: "rides" }
+  _rides: [{ type: Schema.Types.ObjectId, ref: "rides" }]
 });
 
 mongoose.model("users", userSchema);

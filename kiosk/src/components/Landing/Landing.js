@@ -31,7 +31,6 @@ const Landing = () => (
   <Wrapper>
     <div>Bike2Go</div>
     <Button to="/recognition">Start a ride</Button>
-    <Button to="/info">Finish a ride</Button>
   </Wrapper>
 );
 
