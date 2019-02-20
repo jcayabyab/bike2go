@@ -29,7 +29,7 @@ module.exports = app => {
     // get a user based on ID from front end
     const imageUrl =
       "https://scontent-sea1-1.xx.fbcdn.net/v/t1.15752-9/s2048x2048/52638768_561950294307804_3120951123943358464_n.jpg?_nc_cat=103&_nc_ht=scontent-sea1-1.xx&oh=a2855a5d84ca22b767283c9ce3b4a773&oe=5CDAFBBD";
-    const subscriptionKey = "b9db8d7c659246ab9425e9f84a590021";
+    const subscriptionKey = "sub key here";
     let idNum;
     //first to get a person ID
     const params = {
@@ -118,7 +118,7 @@ module.exports = app => {
     for (var i = 0; i < bytes.length; i++) {
       byteArr[i] = bytes.charCodeAt(i);
     }
-    const subscriptionKey = "b9db8d7c659246ab9425e9f84a590021";
+    const subscriptionKey = "sub key here";
     //first doing detect face to get faceID to compare with database
     const params = {
       returnFaceId: "true",
